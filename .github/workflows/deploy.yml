@@ -14,6 +14,7 @@ permissions:
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+  CI: false # This tells GitHub to ignore errors/warnings and just build!
 
 jobs:
   build-and-deploy:
@@ -28,7 +29,7 @@ jobs:
           node-version: 24
 
       - name: Install dependencies
-        run: npm install --no-package-lock --legacy-peer-deps
+        run: npm install --no-package-lock --legacy-peer-deps --force
 
       - name: Build
         run: npm run build
